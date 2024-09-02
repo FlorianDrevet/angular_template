@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@layer base {
+  html,body {
+    overflow-x: initial !important;
+    min-height: 100vh !important; /*possible to remove the height of the footer*/
+    height: 100% !important;
+  }
+  body {
+    @apply m-0 p-0
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
