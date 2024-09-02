@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import {NgModule, provideExperimentalZonelessChangeDetection} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {CoreModule} from "./core/core.module";
 
 @NgModule({
   declarations: [
@@ -11,10 +12,12 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideExperimentalZonelessChangeDetection()
   ],
   bootstrap: [AppComponent]
 })
