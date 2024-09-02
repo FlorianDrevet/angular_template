@@ -1,27 +1,45 @@
-# VolePapillonDamourWebsite
+# Template Angular Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
+Init with :
 
-## Development server
+- Tailwind
+- Angular Material
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Tailwind
 
-## Code scaffolding
+Possible to add font, add in tailwind.config.js :
+```
+theme: {
+    fontFamily: {
+      'wedding': ["Wedding"],
+      "windsong": ["WindSong"],
+      "librebaskerville": ["LibreBaskerville"],
+    },
+    extend: {},
+  },
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Material Angular
 
-## Build
+## Theme
+A custom theme is created in styles.scss: https://material.angular.io/guide/theming#defining-a-theme
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+# TODO when starting app
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+It is possible to navigate between the different TODO thanks to the IDE. This is the list of the different changes to do at the init:
 
-## Running end-to-end tests
+# Name Application
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+It is important to go in package.json and change the name of the application. 
 
-## Further help
+## Title 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Change in index.html the title of the website
+Change in app.component.ts the title of the website
+
+# Icon Website
+
+Add in public/ folder the icon of the app. Change in index.html the path to the icon
+
+
