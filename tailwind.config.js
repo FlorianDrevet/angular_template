@@ -4,6 +4,8 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
+    colors: {},
+    fontFamily: {},
     extend: {},
   },
   plugins: [],
