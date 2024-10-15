@@ -41,10 +41,17 @@ export class AuthenticationService {
   }
 
   public setAuthToken(token: string): void {
+    this._token.set(token)
+
+    if (this._isTokenValid()) {
+      this._isAuthenticated.set(true)
+    }
+
     const decodedTokenDate = this.jwtHelper.getTokenExpirationDate(token);
     if (decodedTokenDate === null) {
       return;
     }
+
     this.cookieService.set("authentication_token", token, decodedTokenDate, "/", "", true, "Strict");
   }
 
@@ -69,7 +76,7 @@ export class AuthenticationService {
 
   private _isTokenValid(): boolean {
     const token = this._token()
-    if (token == null || !this.jwtHelper.isTokenExpired(token)) {
+    if (token == null || this.jwtHelper.isTokenExpired(token)) {
       this.logout()
       return false;
     }
