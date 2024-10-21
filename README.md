@@ -42,4 +42,6 @@ Change in app.component.ts the title of the website
 
 Add in public/ folder the icon of the app. Change in index.html the path to the icon
 
+# Azurite command
 
+azurite --silent --location c:\azurite --debug c:\azurite\debug.log
