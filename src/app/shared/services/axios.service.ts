@@ -15,6 +15,10 @@ export class AxiosService {
 
     axios.interceptors.request.use(
       function (config) {
+        if (config.url === '/auth/login') {
+          return config;
+        }
+
         const token = auth.getBearerToken();
 
         if (token) {
