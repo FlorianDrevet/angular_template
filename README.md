@@ -2,8 +2,9 @@
 
 Init with :
 
-- Tailwind
-- Angular Material
+- Angular 19 (standalone components, zoneless change detection)
+- Tailwind CSS 3
+- Angular Material 19
 
 # Tailwind
 
