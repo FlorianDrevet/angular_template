@@ -1,17 +1,22 @@
-import {Injectable} from '@angular/core';
-import axios from 'axios'
-import {environment} from "../../../environments/environment";
-import {MethodEnum} from "../enums/method.enum";
-import {Router} from "@angular/router";
-import {AuthenticationService} from "./authentication.service";
+import { inject, Injectable } from '@angular/core';
+import axios from 'axios';
+import { environment } from '../../../environments/environment';
+import { MethodEnum } from '../enums/method.enum';
+import { Router } from '@angular/router';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AxiosService {
+  private auth = inject(AuthenticationService);
+  private router = inject(Router);
 
-  constructor(private auth: AuthenticationService, private router: Router) {
-    axios.defaults.baseURL = environment.api_url
+  constructor() {
+    const auth = this.auth;
+    const router = this.router;
+
+    axios.defaults.baseURL = environment.api_url;
 
     axios.interceptors.request.use(
       function (config) {
@@ -49,26 +54,23 @@ export class AxiosService {
     );
   }
 
-  public async request$(method: MethodEnum, url: string, data: any, headers: object = {}, isFormFile: boolean = false): Promise<any> {
-    try {
-      if (isFormFile) {
-        headers = {...headers, "Content-Type": "multipart/form-data"};
-      }
-      else {
-        headers = {...headers, "Content-Type": "application/json"};
-      }
+  public async request$<T = unknown>(
+    method: MethodEnum,
+    url: string,
+    data?: unknown,
+    headers: Record<string, string> = {},
+    isFormFile: boolean = false
+  ): Promise<T> {
+    const contentType = isFormFile ? 'multipart/form-data' : 'application/json';
 
-      const response = await axios({
-        method,
-        url,
-        data,
-        headers: headers,
-        params: method === MethodEnum.GET ? data : {}
-      });
+    const response = await axios<T>({
+      method,
+      url,
+      data,
+      headers: { ...headers, 'Content-Type': contentType },
+      params: method === MethodEnum.GET ? data : {},
+    });
 
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+    return response.data;
   }
 }
