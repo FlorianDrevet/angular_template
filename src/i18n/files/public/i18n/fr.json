@@ -1,0 +1,9 @@
+{
+  "home": {
+    "title": "C'est vivant !",
+    "generatedBy": "Ce projet a été généré avec {{ package }}."
+  },
+  "nav": {
+    "home": "Accueil"
+  }
+}

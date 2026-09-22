@@ -1,0 +1,11 @@
+<section class="profile">
+  <h1>Profile</h1>
+  @if (authenticated().isAuthenticated) {
+    <p>
+      Signed in as <strong>{{ userData().userData?.name ?? userData().userData?.sub }}</strong>
+    </p>
+    <button type="button" (click)="logout()">Sign out</button>
+  } @else {
+    <p>Not signed in.</p>
+  }
+</section>
