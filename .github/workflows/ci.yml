@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm test
+
+  e2e:
+    needs: unit
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: baseline
+            flags: '--ssr=false --ui=none --auth=none --i18n=false --docker=false --ci=false'
+          - name: ssr-material-msal-i18n-docker
+            flags: '--ssr=true --ui=material --auth=msal --i18n=true --docker=true --ci=true'
+          - name: tailwind-oidc-docker
+            flags: '--ssr=false --ui=tailwind --auth=oidc --i18n=false --docker=true --ci=true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm pack
+      - name: Generate and verify (${{ matrix.name }})
+        run: bash scripts/e2e.sh ${{ matrix.flags }}

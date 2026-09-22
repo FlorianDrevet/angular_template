@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "FloriandrevetNgTemplateUi",
+  "title": "@floriandrevet/ng-template ui options",
+  "type": "object",
+  "description": "Adds a UI library to the project.",
+  "additionalProperties": false,
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The name of the project to add the UI library to.",
+      "$default": { "$source": "projectName" }
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["none", "material", "tailwind"],
+      "default": "none",
+      "x-prompt": {
+        "message": "Which UI library would you like to use?",
+        "type": "list",
+        "items": [
+          { "value": "none", "label": "None (plain SCSS with design tokens)" },
+          { "value": "material", "label": "Angular Material" },
+          { "value": "tailwind", "label": "Tailwind CSS" }
+        ]
+      }
+    }
+  },
+  "required": ["project", "kind"]
+}

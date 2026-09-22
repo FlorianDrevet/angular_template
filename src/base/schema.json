@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "FloriandrevetNgTemplateBase",
+  "title": "@floriandrevet/ng-template base options",
+  "type": "object",
+  "description": "Applies the modernized application shell on top of a freshly generated Angular application.",
+  "additionalProperties": false,
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The name of the project to apply the shell to.",
+      "$default": { "$source": "projectName" }
+    },
+    "ssr": {
+      "type": "boolean",
+      "description": "Whether the project was generated with SSR enabled.",
+      "default": false
+    }
+  },
+  "required": ["project"]
+}

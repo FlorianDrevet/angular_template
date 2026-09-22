@@ -1,0 +1,11 @@
+<section class="profile">
+  <h1>Profile</h1>
+  @if (account(); as account) {
+    <p>
+      Signed in as <strong>{{ account.username }}</strong>
+    </p>
+    <button type="button" (click)="logout()">Sign out</button>
+  } @else {
+    <p>Not signed in.</p>
+  }
+</section>

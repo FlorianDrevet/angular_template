@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "FloriandrevetNgTemplateNgNew",
+  "title": "@floriandrevet/ng-template ng-new options",
+  "type": "object",
+  "description": "Creates a new Angular 22 workspace with the modernized application shell, and opt-in SSR, authentication, i18n, UI library, Docker and CI.",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "description": "The name for the new workspace and the initial project.",
+      "type": "string",
+      "$default": { "$source": "argv", "index": 0 },
+      "x-prompt": "What name would you like to use for the new project?"
+    },
+    "directory": {
+      "description": "The directory to create the workspace in. Defaults to the project name.",
+      "type": "string"
+    },
+    "ssr": {
+      "description": "Enable Server-Side Rendering (SSR) and Static Site Generation.",
+      "type": "boolean",
+      "default": false,
+      "x-prompt": "Enable Server-Side Rendering (SSR)?"
+    },
+    "ui": {
+      "description": "The UI library to set up.",
+      "type": "string",
+      "enum": ["none", "material", "tailwind"],
+      "default": "none",
+      "x-prompt": {
+        "message": "Which UI library would you like to use?",
+        "type": "list",
+        "items": [
+          { "value": "none", "label": "None (plain SCSS with design tokens)" },
+          { "value": "material", "label": "Angular Material" },
+          { "value": "tailwind", "label": "Tailwind CSS" }
+        ]
+      }
+    },
+    "auth": {
+      "description": "The authentication provider to set up.",
+      "type": "string",
+      "enum": ["none", "msal", "oidc"],
+      "default": "none",
+      "x-prompt": {
+        "message": "Which authentication provider would you like to use?",
+        "type": "list",
+        "items": [
+          { "value": "none", "label": "None" },
+          { "value": "msal", "label": "Microsoft Entra ID (MSAL)" },
+          { "value": "oidc", "label": "Generic OIDC (Keycloak, Auth0, ...)" }
+        ]
+      }
+    },
+    "i18n": {
+      "description": "Add runtime internationalization (Transloco).",
+      "type": "boolean",
+      "default": false,
+      "x-prompt": "Add internationalization (i18n) with Transloco?"
+    },
+    "docker": {
+      "description": "Add a multi-stage Dockerfile with runtime configuration injection.",
+      "type": "boolean",
+      "default": false,
+      "x-prompt": "Add a Dockerfile?"
+    },
+    "ci": {
+      "description": "Add a GitHub Actions CI workflow (lint, test, build).",
+      "type": "boolean",
+      "default": true,
+      "x-prompt": "Add a GitHub Actions CI workflow?"
+    },
+    "packageManager": {
+      "description": "The package manager used to install dependencies.",
+      "type": "string",
+      "enum": ["npm", "yarn", "pnpm", "bun"]
+    },
+    "skipInstall": {
+      "description": "Skip the automatic installation of packages.",
+      "type": "boolean",
+      "default": false
+    },
+    "skipGit": {
+      "description": "Do not initialize a Git repository in the new workspace.",
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": ["name"]
+}

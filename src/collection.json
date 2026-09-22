@@ -1,0 +1,44 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "@floriandrevet/ng-template",
+  "extends": ["@schematics/angular"],
+  "schematics": {
+    "ng-new": {
+      "aliases": ["new"],
+      "description": "Creates a new Angular 22 workspace from the @floriandrevet/ng-template generator, with opt-in SSR, authentication, i18n, UI library, Docker and CI.",
+      "factory": "./ng-new/index#default",
+      "schema": "./ng-new/schema.json"
+    },
+    "base": {
+      "description": "Applies the modernized application shell (used internally by ng-new; can be re-applied on an existing project).",
+      "factory": "./base/index#default",
+      "schema": "./base/schema.json",
+      "private": true
+    },
+    "ui": {
+      "description": "Adds a UI library (Angular Material, Tailwind CSS, or none) to the project.",
+      "factory": "./ui/index#default",
+      "schema": "./ui/schema.json"
+    },
+    "auth": {
+      "description": "Adds authentication to the project (Microsoft Entra ID via MSAL, or generic OIDC).",
+      "factory": "./auth/index#default",
+      "schema": "./auth/schema.json"
+    },
+    "i18n": {
+      "description": "Adds runtime internationalization (Transloco) to the project.",
+      "factory": "./i18n/index#default",
+      "schema": "./i18n/schema.json"
+    },
+    "docker": {
+      "description": "Adds a multi-stage Dockerfile with runtime configuration injection.",
+      "factory": "./docker/index#default",
+      "schema": "./docker/schema.json"
+    },
+    "ci": {
+      "description": "Adds a GitHub Actions CI workflow (lint, test, build) to the project.",
+      "factory": "./ci/index#default",
+      "schema": "./ci/schema.json"
+    }
+  }
+}

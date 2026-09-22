@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "FloriandrevetNgTemplateAuth",
+  "title": "@floriandrevet/ng-template auth options",
+  "type": "object",
+  "description": "Adds authentication to the project.",
+  "additionalProperties": false,
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The name of the project to add authentication to.",
+      "$default": { "$source": "projectName" }
+    },
+    "provider": {
+      "type": "string",
+      "enum": ["none", "msal", "oidc"],
+      "default": "none",
+      "x-prompt": {
+        "message": "Which authentication provider would you like to use?",
+        "type": "list",
+        "items": [
+          { "value": "none", "label": "None" },
+          { "value": "msal", "label": "Microsoft Entra ID (MSAL)" },
+          { "value": "oidc", "label": "Generic OIDC (Keycloak, Auth0, ...)" }
+        ]
+      }
+    },
+    "ssr": {
+      "type": "boolean",
+      "description": "Whether the project was generated with SSR enabled.",
+      "default": false
+    }
+  },
+  "required": ["project", "provider"]
+}
