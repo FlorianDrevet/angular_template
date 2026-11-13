@@ -5,7 +5,7 @@
   "schematics": {
     "ng-new": {
       "aliases": ["new"],
-      "description": "Creates a new Angular 22 workspace from the @floriandrevet/ng-template generator, with opt-in SSR, authentication, i18n, UI library, Docker and CI.",
+      "description": "Creates an Angular 22 workspace from the @floriandrevet/ng-template generator, with AI coding guidance and opt-in SSR, authentication, i18n, UI library, Docker and CI.",
       "factory": "./ng-new/index#default",
       "schema": "./ng-new/schema.json"
     },

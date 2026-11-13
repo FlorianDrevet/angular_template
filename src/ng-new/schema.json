@@ -3,7 +3,7 @@
   "$id": "FloriandrevetNgTemplateNgNew",
   "title": "@floriandrevet/ng-template ng-new options",
   "type": "object",
-  "description": "Creates a new Angular 22 workspace with the modernized application shell, and opt-in SSR, authentication, i18n, UI library, Docker and CI.",
+  "description": "Creates an Angular 22 workspace with the modernized application shell, AI coding guidance, and opt-in SSR, authentication, i18n, UI library, Docker and CI.",
   "additionalProperties": false,
   "properties": {
     "name": {

@@ -4,7 +4,7 @@
 // schema.json files, and the files/** template trees) to the same relative
 // path under dist/, since tsc only touches .ts files.
 import { execFileSync } from 'node:child_process';
-import { cpSync, existsSync, readdirSync, statSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -37,6 +37,7 @@ function copyAssets(dir) {
       continue;
     }
     const destPath = join(distDir, relative(srcDir, srcPath));
+    mkdirSync(dirname(destPath), { recursive: true });
     cpSync(srcPath, destPath);
   }
 }
