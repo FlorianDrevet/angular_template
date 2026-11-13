@@ -1,4 +1,10 @@
 {
   "$schema": "../node_modules/@angular-devkit/schematics/migrations/migration-collection-schema.json",
-  "schematics": {}
+  "schematics": {
+    "add-ai-coding-guidance": {
+      "version": "22.2.0",
+      "description": "Adds project guidance and an Angular feature skill for AI coding agents.",
+      "factory": "./migrations/add-ai-coding-guidance#default"
+    }
+  }
 }

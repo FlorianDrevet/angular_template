@@ -25,6 +25,8 @@ You'll be prompted for each option below (or pass them as flags to skip the prom
 - **Runtime configuration**, not build-time `environments/`: `public/config.json` is fetched once at startup (`provideAppConfig()`) and exposed through an `APP_CONFIG` token, so the same build artifact can deploy to every environment. The `docker` option regenerates it from environment variables on container start.
 - **`HttpClient`** (fetch-based by default in Angular 22) with two interceptors (`core/http/interceptors.ts`): one prefixes relative URLs with `APP_CONFIG.apiUrl`, the other centralizes error logging. Feature schematics (e.g. `oidc`'s `authInterceptor()`) append to that same array.
 - **Quality tooling out of the box**: `angular-eslint` + `typescript-eslint` (typed linting, `recommendedTypeChecked`), Prettier (including the Angular HTML parser), Husky + lint-staged running both on commit.
+- **AI coding context out of the box**: `AGENTS.md` gives coding agents durable project guidance; `.agents/skills/angular-feature/SKILL.md` provides a reusable Angular workflow. VS Code recommends Angular Language Service, ESLint, Prettier and GitHub Copilot.
+- **Dependency upkeep**: Dependabot checks npm packages and GitHub Actions weekly; generated CI covers Node 22, 24 and 26.
 
 ## Adding a feature to an existing project
 
@@ -76,4 +78,4 @@ npm install -g @angular/cli@22 @floriandrevet/ng-template
 
 ## Versioning and upgrades
 
-The package version tracks the Angular major it targets (`22.x.y`). When Angular ships a new major, this template gets a matching major release; existing projects upgrade Angular itself with `ng update @angular/core`, and pick up this template's own migrations (if any) with `ng update @floriandrevet/ng-template`.
+The package version tracks the Angular major and minor branch it targets (`22.x.y`). When Angular ships a new major or minor, this template gets a matching release; existing projects upgrade Angular itself with `ng update @angular/core`, and pick up this template's migrations with `ng update @floriandrevet/ng-template`. The 22.2.0 migration adds the AI guidance and skill when those files are missing.

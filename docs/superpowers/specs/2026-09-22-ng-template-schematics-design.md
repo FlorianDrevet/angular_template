@@ -2,6 +2,8 @@
 
 Date : 2026-09-22
 
+> Mise à jour du 2026-11-13 : cette note de conception a été vérifiée à l'origine avec Angular 22.1.8. Le template cible maintenant Angular 22.2.7; les références à 22.1.8 ci-dessous décrivent la vérification historique.
+
 ## Problème
 
 Le repo `angular_template` était une app Angular 19 à copier-coller à la main pour démarrer un nouveau projet. Elle contenait :
@@ -66,6 +68,8 @@ tests/                      SchematicTestRunner + Vitest, un fichier de test par
 .github/workflows/          ci.yml (tests unitaires du package) et publish.yml (GitHub Packages sur tag v*)
 ```
 
+Le projet généré inclut aussi un `AGENTS.md`, une skill Angular sous `.agents/skills/`, les extensions VS Code recommandées et une configuration Dependabot.
+
 ## Socle `base`
 
 - Composants standalone uniquement, `inject()`, `input()`/`output()`, `@if`/`@for`, `OnPush` par défaut.
@@ -86,9 +90,9 @@ tests/                      SchematicTestRunner + Vitest, un fichier de test par
 
 ## Évolution dans le temps
 
-- Version du package alignée sur le major Angular (`22.x.y`).
+- Version du package alignée sur le major et le minor Angular (`22.x.y`).
 - Montée de version du template : bump de `@schematics/angular` et des dépendances ajoutées, matrice e2e, publication `23.0.0` au major suivant.
-- Projets déjà générés : `ng update @angular/core` pour Angular, `ng update @floriandrevet/ng-template` pour nos migrations (`migrations.json`, vide au départ).
+- Projets déjà générés : `ng update @angular/core` pour Angular, `ng update @floriandrevet/ng-template` pour nos migrations (la version 22.2.0 ajoute le guide AI et la skill lorsqu'ils sont absents).
 - Ajouter une option : nouveau dossier schematic + entrée dans `collection.json` + prompt dans `ng-new` + entrée dans la matrice e2e.
 
 ## Vérification

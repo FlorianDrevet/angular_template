@@ -1,7 +1,7 @@
 {
   "name": "@floriandrevet/ng-template",
-  "version": "22.0.0",
-  "description": "Configurable Angular 22 project generator (Angular Schematics): SSR, authentication (Microsoft Entra ID / generic OIDC), i18n, UI library, Docker and CI, all opt-in.",
+  "version": "22.2.0",
+  "description": "Configurable Angular 22 project generator (Angular Schematics) with AI coding guidance; SSR, authentication (Microsoft Entra ID / generic OIDC), i18n, UI library, Docker and CI are opt-in.",
   "license": "MIT",
   "private": false,
   "repository": {
@@ -14,7 +14,10 @@
     "ng-new",
     "template",
     "generator",
-    "scaffolding"
+    "scaffolding",
+    "ai",
+    "coding-agent",
+    "agent-skills"
   ],
   "main": "dist/index.js",
   "schematics": "./dist/collection.json",
@@ -30,7 +33,7 @@
     "LICENSE"
   ],
   "engines": {
-    "node": "^22.22.3 || ^24.15.0 || >=26.0.0"
+    "node": "^22.22.3 || ^24.15.0 || ^26.0.0"
   },
   "scripts": {
     "build": "node scripts/build.mjs",
@@ -45,20 +48,20 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@angular-devkit/core": "22.1.8",
-    "@angular-devkit/schematics": "22.1.8",
-    "@angular/cli": "22.1.8",
-    "@eslint/js": "^9.38.0",
-    "@schematics/angular": "22.1.8",
-    "@types/node": "^24.13.0",
-    "eslint": "^10.11.0",
+    "@angular-devkit/core": "22.2.7",
+    "@angular-devkit/schematics": "22.2.7",
+    "@angular/cli": "22.2.7",
+    "@eslint/js": "^10.0.1",
+    "@schematics/angular": "22.2.7",
+    "@types/node": "^24.19.2",
+    "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
-    "lint-staged": "^17.5.1",
-    "prettier": "^3.9.8",
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.10.1",
     "typescript": "~6.0.3",
-    "typescript-eslint": "^8.70.1",
-    "vitest": "^5.0.1"
+    "typescript-eslint": "^8.72.2",
+    "vitest": "^5.1.0"
   },
   "lint-staged": {
     "*.ts": [
