@@ -50,7 +50,7 @@
   "devDependencies": {
     "@angular-devkit/core": "22.2.7",
     "@angular-devkit/schematics": "22.2.7",
-    "@angular/cli": "22.2.7",
+    "@angular/cli": "22.3.0",
     "@eslint/js": "^10.0.1",
     "@schematics/angular": "22.2.7",
     "@types/node": "^24.19.2",
